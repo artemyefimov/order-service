@@ -13,6 +13,8 @@ def missing(value: str) -> Callable[[], Never]:
 
 
 class Settings(BaseSettings):
-    database_url: str = Field(default_factory=missing("POSTGRES_CONNECTION_STRING"))
+    postgres_connection_string: str = Field(
+        default_factory=missing("POSTGRES_CONNECTION_STRING")
+    )
     capashino_base_url: str = Field(default_factory=missing("CAPASHINO_BASE_URL"))
     capashino_api_key: str = Field(default_factory=missing("CAPASHINO_API_KEY"))
