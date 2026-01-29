@@ -18,3 +18,9 @@ class Settings(BaseSettings):
     )
     capashino_base_url: str = Field(default_factory=missing("CAPASHINO_BASE_URL"))
     capashino_api_key: str = Field(default_factory=missing("CAPASHINO_API_KEY"))
+
+    @property
+    def database_url(self) -> str:
+        return self.postgres_connection_string.replace(
+            "postgres://", "postgresql+asyncpg://"
+        )

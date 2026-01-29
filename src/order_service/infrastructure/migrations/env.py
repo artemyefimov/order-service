@@ -19,6 +19,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 database_url = os.getenv("POSTGRES_CONNECTION_STRING", "sqlite+aiosqlite://")
+database_url = database_url.replace("postgres://", "postgresql+asyncpg://")
 config.set_main_option("sqlalchemy.url", database_url)
 
 
