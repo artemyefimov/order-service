@@ -11,7 +11,7 @@ from order_service.settings import Settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI, settings: Settings) -> AsyncGenerator[None]:
-    engine = create_async_engine(settings.postgres_connection_string)
+    engine = create_async_engine(settings.database_url)
     app.state.database_engine = engine
     app.state.settings = settings
 
